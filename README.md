@@ -105,15 +105,17 @@ flowchart TD
 - **Injection Surface Minimization:** Out-of-scope queries trigger a hard block. Since the LLM never processes unclassified input directly, the prompt injection surface is drastically minimized.
 
 ```mermaid
+%%{init: {"flowchart": {"curve": "stepBefore"}}}%%
 flowchart TD
-    %% GitHub native palette for AI and logic flows
-    classDef router fill:#8957e5,color:#fff,stroke-width:0px
-    classDef forger fill:#d2a8ff,color:#000,stroke-width:0px
-    classDef block fill:#da3633,color:#fff,stroke-width:0px
-    classDef db fill:#1f6feb,color:#fff,stroke-width:0px
-    classDef success fill:#238636,color:#fff,stroke-width:0px
+    %% Muted / Opaque Palette (GitHub Dark Mode aesthetic)
+    classDef default fill:#21262d,stroke:#30363d,color:#c9d1d9,stroke-width:1px
+    classDef router fill:#272336,stroke:#493e68,color:#c9d1d9,stroke-width:1px
+    classDef forger fill:#2d243e,stroke:#4a3b69,color:#c9d1d9,stroke-width:1px
+    classDef block fill:#3d1e1e,stroke:#662c2c,color:#c9d1d9,stroke-width:1px
+    classDef db fill:#1b2a40,stroke:#2e4468,color:#c9d1d9,stroke-width:1px
+    classDef success fill:#1e3625,stroke:#2f5e3e,color:#c9d1d9,stroke-width:1px
 
-    A([Raw User Input]) --> R{Single-Word Router<br/>Outputs EXACTLY 1 Keyword}:::router
+    A[Raw User Input] --> R[Single-Word Router<br/>Outputs EXACTLY 1 Keyword]:::router
     
     %% 1. Question Forger Loop
     R -- "FORGER" --> F[Question Forger<br/>Reformulates using Chat History]:::forger
