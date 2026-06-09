@@ -23,7 +23,7 @@
 ## 🏗️ Architecture Overview
 
 <!-- Coloque uma screenshot bonita do n8n ou diagrama aqui -->
-![Architecture Flowchart](https://github.com/FelipeBebas/clinical-support-chatbot/blob/main/architecture/flow_diagram.jpeg)
+
 <p align="center">
   <img src=".architecture/flow_diagram.jpeg" width="1000" alt="n8n Workflow" />
   <br>
