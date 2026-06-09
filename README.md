@@ -24,6 +24,11 @@
 
 <!-- Coloque uma screenshot bonita do n8n ou diagrama aqui -->
 ![Architecture Flowchart](https://github.com/FelipeBebas/clinical-support-chatbot/blob/main/architecture/flow_diagram.jpeg)
+<p align="center">
+  <img src=".architecture/flow_diagram.jpeg" width="1000" alt="n8n Workflow" />
+  <br>
+  <sub><em>n8n Workflow</em></sub>
+</p>
 
 The system orchestrates a 4-stage decision pipeline that physically isolates decision logic from text generation logic. The LLM acts **only as a reader and formatter**, never as an ungrounded knowledge source.
 
@@ -35,7 +40,9 @@ The system orchestrates a 4-stage decision pipeline that physically isolates dec
 State control is managed via **Google Sheets** and **Redis**. Every incoming user ID is intercepted and checked for Terms-of-Use acceptance before any AI processing begins. Unregistered users are securely locked in a consent flow.
 
 <p align="center">
-  <img src="./architecture/LGPD.png" width="350" title="WhatsApp Demo - LGPD" />
+  <img src="./architecture/LGPD.png" width="350" alt="WhatsApp Demo - LGPD" />
+  <br>
+  <sub><em>WhatsApp Demo - LGPD</em></sub>
 </p>
 
 ### 2. Tier 1: Hot Search (Vectorized FAQ)
