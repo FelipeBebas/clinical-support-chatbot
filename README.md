@@ -72,17 +72,35 @@ In conversational AI, passing every single message through an LLM is highly inef
 
 - **Cost & Latency:** By intercepting common queries with the Tier 1 Hot Search, we return answers instantly and bypass LLM prompt/completion costs.
 - **Data Ingestion:** The FAQ dataset is maintained externally by the domain expert (client) via Google Sheets, empowering non-technical users to manage Q&A pairs. An automated workflow syncs these into Pinecone.
-- **Threshold Tuning:** A strict threshold prevents false positives. If the query falls below the mathematical threshold, it is gracefully escalated to the Router LLM.
+- **Threshold Tuning:** A strict threshold prevents false positives. If the query falls below the mathematical threshold it is escalated to the Router LLM.
+- 
 </details>
 
 <details>
 <summary><b>✍️ Prompt Engineering & Structuring Notes</b> (Click to expand)</summary>
 <br>
 
-- **The Single-Word Router:** Traditional LLMs are verbose. The Router prompt is strictly constrained to output *only a single predefined keyword* (e.g., `U200`, `ARC`, `OUT_OF_SCOPE`). This eliminates parsing errors and ensures the Switch Node executes exact string matching.
+- **The Single-Word Router:** Traditional LLMs are verbose. The Router prompt is strictly constrained to output *only a single predefined keyword* (e.g., `Cemente1`, `Cement2`, `OUT_OF_SCOPE`). This eliminates parsing errors and ensures the Switch Node executes exact string matching.
 - **Contextual Query Reconstruction:** The "Question Forger" intercepts fragmented follow-up questions and reformulates them against the chat history before vector retrieval, drastically improving semantic search accuracy.
 - **Hierarchical Markdown Ingestion:** Clinical documentation was curated manually and structured in Markdown to preserve semantic boundaries (Headers, bullet points). The text splitter respects these boundaries, ensuring critical decision tables and protocols are retrieved as complete, unaltered units (preventing the LLM from summarizing or omitting key clinical data).
 - **Injection Surface Minimization:** Out-of-scope queries trigger a hard block. Since the LLM never processes unclassified input directly, the prompt injection surface is drastically minimized.
+
+```mermaid
+flowchart TD
+    %% GitHub native colors for styling
+    classDef dataBase fill:#1f6feb,color:#fff,stroke-width:0px
+    classDef success fill:#238636,color:#fff,stroke-width:0px
+    classDef escalate fill:#da3633,color:#fff,stroke-width:0px
+
+    A([Incoming User Message]) --> B[Vectorize Query<br/>OpenAI Embeddings]
+    B --> C[(Pinecone Vector DB<br/>FAQ Namespace)]:::dataBase
+    
+    C --> D{Similarity Score<br/>> 0.85 ?}
+    
+    D -- "Yes (Match Found)" --> E[Return Exact FAQ Answer<br/>Zero LLM Tokens Used]:::success
+    D -- "No (Novel Query)" --> F[Escalate to Router LLM<br/>Deep Intent Classification]:::escalate
+```
+
 </details>
 
 ---
