@@ -103,6 +103,32 @@ flowchart TD
 - **Contextual Query Reconstruction:** The "Question Forger" intercepts fragmented follow-up questions and reformulates them against the chat history before vector retrieval, drastically improving semantic search accuracy.
 - **Hierarchical Markdown Ingestion:** Clinical documentation was curated manually and structured in Markdown to preserve semantic boundaries (Headers, bullet points). The text splitter respects these boundaries, ensuring critical decision tables and protocols are retrieved as complete, unaltered units (preventing the LLM from summarizing or omitting key clinical data).
 - **Injection Surface Minimization:** Out-of-scope queries trigger a hard block. Since the LLM never processes unclassified input directly, the prompt injection surface is drastically minimized.
+
+```mermaid
+flowchart TD
+    %% GitHub native palette for AI and logic flows
+    classDef router fill:#8957e5,color:#fff,stroke-width:0px
+    classDef forger fill:#d2a8ff,color:#000,stroke-width:0px
+    classDef block fill:#da3633,color:#fff,stroke-width:0px
+    classDef db fill:#1f6feb,color:#fff,stroke-width:0px
+    classDef success fill:#238636,color:#fff,stroke-width:0px
+
+    A([Raw User Input]) --> R{Single-Word Router<br/>Outputs EXACTLY 1 Keyword}:::router
+    
+    %% 1. Question Forger Loop
+    R -- "FORGER" --> F[Question Forger<br/>Reformulates using Chat History]:::forger
+    F -. "Re-injects fully qualified query" .-> R
+    
+    %% 2. Security Block
+    R -- "OUT_OF_SCOPE" --> B[Static Hard Block<br/>Minimizes Injection Surface]:::block
+    
+    %% 3. Hierarchical Retrieval
+    R -- "Cement1 / Cement2" --> DB[(Pinecone Vector DB<br/>Hierarchical Markdown Chunks)]:::db
+    
+    %% 4. Final Output
+    DB --> S[Final RAG Synthesis<br/>Preserves Critical Clinical Tables]:::success
+```
+
 </details>
 
 ---
