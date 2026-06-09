@@ -35,6 +35,10 @@ The system orchestrates a 4-stage decision pipeline that physically isolates dec
 State control is managed via **Google Sheets** and **Redis**. Every incoming user ID is intercepted and checked for Terms-of-Use acceptance before any AI processing begins. Unregistered users are securely locked in a consent flow.
 ![LGPD Validation](https://github.com/FelipeBebas/clinical-support-chatbot/blob/main/architecture/LGPD.png)
 
+<p align="center">
+  <img src="./architecture/LGPD.png" width="800" title="WhatsApp Demo - LGPD" />
+</p>
+
 ### 2. Tier 1: Hot Search (Vectorized FAQ)
 Semantic retrieval using Pinecone + Redis + OpenAI Embeddings. Queries are vectorized and matched against a pre-approved FAQ knowledge base. 
 *If the similarity score exceeds a strict threshold, the answer is served instantly, bypassing the LLM entirely.*
