@@ -33,10 +33,9 @@ The system orchestrates a 4-stage decision pipeline that physically isolates dec
 
 ### 1. LGPD Validation (Gatekeeper)
 State control is managed via **Google Sheets** and **Redis**. Every incoming user ID is intercepted and checked for Terms-of-Use acceptance before any AI processing begins. Unregistered users are securely locked in a consent flow.
-![LGPD Validation](https://github.com/FelipeBebas/clinical-support-chatbot/blob/main/architecture/LGPD.png)
 
 <p align="center">
-  <img src="./architecture/LGPD.png" width="800" title="WhatsApp Demo - LGPD" />
+  <img src="./architecture/LGPD.png" width="350" title="WhatsApp Demo - LGPD" />
 </p>
 
 ### 2. Tier 1: Hot Search (Vectorized FAQ)
