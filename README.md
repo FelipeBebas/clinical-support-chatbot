@@ -105,7 +105,6 @@ flowchart TD
 - **Injection Surface Minimization:** Out-of-scope queries trigger a hard block. Since the LLM never processes unclassified input directly, the prompt injection surface is drastically minimized.
 
 ```mermaid
-%%{init: {"flowchart": {"curve": "stepBefore"}}}%%
 flowchart TD
     %% Muted / Opaque Palette (GitHub Dark Mode aesthetic)
     classDef default fill:#21262d,stroke:#30363d,color:#c9d1d9,stroke-width:1px
