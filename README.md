@@ -25,7 +25,7 @@
 <!-- Coloque uma screenshot bonita do n8n ou diagrama aqui -->
 
 <p align="center">
-  <img src=".architecture/flow_diagram.jpeg" width="1000" alt="n8n Workflow" />
+  <img src="./architecture/flow_diagram.jpeg" width="1000" alt="n8n Workflow" />
   <br>
   <sub><em>n8n Workflow</em></sub>
 </p>
