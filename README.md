@@ -51,7 +51,7 @@ Semantic retrieval using Pinecone + Redis + OpenAI Embeddings. Queries are vecto
 When the Hot Search score is low, `gpt-4o-mini` operates strictly as a classifier. It reads the incoming message and routes it to exactly one predefined segment:
 - 📖 **Clinical Manual:** Routes to curated technical protocols.
 - 💬 **FAQ:** Routes to hand-crafted answers for recurring questions.
-- 🛠️ **Question Forger:** If the query is ambiguous or incomplete, this trench reconstructs it into a well-formed query before re-injecting it into the pipeline—improving retrieval precision natively.
+- 🛠️ **Question Forger:** If the query is ambiguous or incomplete, this trench reconstructs it into a well-formed query before re-injecting it into the pipeline improving retrieval precision natively.
 - 🛑 **OUT_OF_SCOPE:** Triggers a hard block with a fixed response.
 
 ### 4. Tier 3: Specialist RAG
