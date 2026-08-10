@@ -1,4 +1,4 @@
-# 🦷 Clinical Support-Chatbot: RAG Multi-Level Assistant
+# Clinical Support-Chatbot: RAG Multi-Level Assistant
 
 ![n8n](https://img.shields.io/badge/n8n-FF6600?style=for-the-badge&logo=n8n&logoColor=white)
 ![Redis](https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white)
@@ -6,7 +6,7 @@
 ![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white)
 ![WhatsApp](https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)
 
-> A WhatsApp chatbot for dental clinical support, built on a multi-level Retrieval-Augmented Generation (RAG) architecture explicitly designed to **eliminate hallucinations in healthcare contexts**.
+> A WhatsApp chatbot for healthcare clinical support, built on a multi-level Retrieval-Augmented Generation (RAG) architecture explicitly designed to **eliminate hallucinations in healthcare contexts**.
 
 *Note: Client details are omitted per confidentiality agreement. Architecture and engineering decisions are documented here for portfolio purposes.*
 
