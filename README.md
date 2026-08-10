@@ -83,7 +83,7 @@ flowchart TD
     A([Incoming User Message]) --> B[Vectorize Query<br/>OpenAI Embeddings]
     B --> C[(Pinecone Vector DB<br/>FAQ Namespace)]:::dataBase
     
-    C --> D{Similarity Score<br/>= 0.55 ?}
+    C --> D{Similarity Score<br/>>= 0.55 ?}
     
     D -- "Yes (Match Found)" --> E[Return Exact FAQ Answer<br/>Zero LLM Tokens Used]:::success
     D -- "No (Novel Query)" --> F[Escalate to Router LLM<br/>Deep Intent Classification]:::escalate
