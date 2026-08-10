@@ -22,8 +22,6 @@
 
 ## 🏗️ Architecture Overview
 
-<!-- Coloque uma screenshot bonita do n8n ou diagrama aqui -->
-
 <p align="center">
   <img src="./architecture/flow_diagram.jpeg" width="1000" alt="n8n Workflow" />
   <br>
@@ -99,7 +97,7 @@ flowchart TD
 <summary><b>✍️ Prompt Engineering & Structuring Notes</b> (Click to expand)</summary>
 <br>
 
-- **The Single-Word Router:** Traditional LLMs are verbose. The Router prompt is strictly constrained to output *only a single predefined keyword* (e.g., `Cement1`, `Cement2`, `OUT_OF_SCOPE`). This eliminates parsing errors and ensures the Switch Node executes exact string matching.
+- **The Single-Word Router:** Traditional LLMs are verbose. The Router prompt is strictly constrained to output *only a single predefined keyword* (e.g., `knowledge_base_1`, `knowledge_base_2`, `OUT_OF_SCOPE`). This eliminates parsing errors and ensures the Switch Node executes exact string matching.
 - **Contextual Query Reconstruction:** The "Question Forger" intercepts fragmented follow-up questions and reformulates them against the chat history before vector retrieval, drastically improving semantic search accuracy.
 - **Hierarchical Markdown Ingestion:** Clinical documentation was curated manually and structured in Markdown to preserve semantic boundaries (Headers, bullet points). The text splitter respects these boundaries, ensuring critical decision tables and protocols are retrieved as complete, unaltered units (preventing the LLM from summarizing or omitting key clinical data).
 - **Injection Surface Minimization:** Out-of-scope queries trigger a hard block. Since the LLM never processes unclassified input directly, the prompt injection surface is drastically minimized.
@@ -124,7 +122,7 @@ flowchart TD
     R -- "OUT_OF_SCOPE" --> B[Static Hard Block<br/>]:::block
     
     %% 3. Hierarchical Retrieval
-    R -- "Cement1 / Cement2" --> DB[(Pinecone Vector DB<br/>Hierarchical Markdown Chunks)]:::db
+    R -- "knowledge_base_1 / knowledge_base_2" --> DB[(Pinecone Vector DB<br/>Hierarchical Markdown Chunks)]:::db
     
     %% 4. Final Output
     DB --> S[Final RAG Synthesis<br/>Preserves Critical Clinical Tables]:::success
